@@ -10,4 +10,7 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## First setup
 
-**[TODO 05/01/2018 @vanessa-cooper]:** _It's been a while since anyone ran a fresh copy of this repo. I think it's worth documenting the steps needed to install and run the repo on a new machine?_
+First you need to clone the repo into a local folder, and then [install docker](https://docs.docker.com/get-docker/).
+Now you can verify the installation by running docker -v, and docker-compose -v.
+Next, in order to run the application all you need to do is run docker-compose up.
+The backend will be accessible on [this url](http://localhost:3000/api/) and the frontend will be accessible on [this url](http://localhost:3001/register/).
