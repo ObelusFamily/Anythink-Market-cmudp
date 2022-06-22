@@ -5,6 +5,7 @@ var Comment = mongoose.model("Comment");
 var User = mongoose.model("User");
 var auth = require("../auth");
 const { sendEvent } = require("../../lib/event");
+const { query } = require("express");
 
 // Preload item objects on routes with ':item'
 router.param("item", function (req, res, next, slug) {
@@ -54,7 +55,7 @@ router.get("/", auth.optional, function (req, res, next) {
   }
 
   if (typeof req.query.title !== "undefined") {
-    query.title = req.query.title;
+    query.title = { $regex: req.query.title, $options: "i" };
   }
 
   Promise.all([
