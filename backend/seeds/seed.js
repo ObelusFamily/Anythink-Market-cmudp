@@ -46,6 +46,12 @@ const seedComment = async (seller_id, item_id) => {
 };
 
 const seedAmount = async (amount) => {
+  await user.deleteMany({});
+  console.log("Deleted all users");
+  await item.deleteMany({});
+  console.log("Deleted all items");
+  await comment.deleteMany({});
+  console.log("Deleted all comments");
   for (let i = 0; i < amount; i++) {
     const seller_id = await seedUser();
     const item_id = await seedItem(seller_id);
@@ -54,5 +60,7 @@ const seedAmount = async (amount) => {
   console.log("finished seeding");
 };
 
-seedAmount(100);
-process.exit();
+(async () => {
+  await seedAmount(100);
+  process.exit();
+})();
